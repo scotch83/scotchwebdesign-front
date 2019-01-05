@@ -1,0 +1,8 @@
+{
+    "files.exclude": {
+        ".tmp": true,
+        "bower_components": true,
+        "dist": true,
+        "node_modules": true
+    }
+}
