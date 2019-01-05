@@ -29,3 +29,67 @@ body {
     letter-spacing: -1px;
   }
 }
+
+
+body,
+* {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    cursor: default;
+}
+
+@keyframes intro-animation{
+    0% {opacity: 1; display: block;}
+    50% {opacity: 0;}
+    100% {opacity: 1; display: none;}
+}
+.intro {
+    margin: auto;
+    animation: intro-animation 2 infinite;
+}
+
+
+#container {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+}
+.squareContainer {
+    min-height: 50px;
+    min-width: 50px;
+}
+
+.square {
+    position: absolute;
+    min-height: 50px;
+    min-width: 50px;
+    opacity: 0;
+    transition: all 1s, z-index 0s 2s;
+}
+.squareAnimated {
+    opacity: 1;
+    transition: all ease-out .2s;
+    transform: scale(2.5) rotate(360deg);
+}
+
+
+.row {
+    display: flex;
+}
+$message-overlay-box-font-size: 50px;
+#message-overlay {
+  position: absolute;
+  top: calc(50% - #{$message-overlay-box-font-size});
+  font-size: $message-overlay-box-font-size;
+  text-align: center;
+  width: 100%;
+  z-index: -1;
+}
+.animated-message {
+  opacity: 1;
+  transition: all 0.2s ease-in-out;
+}
+.hide-message {
+  opacity: 0;
+}
