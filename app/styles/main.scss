@@ -94,3 +94,10 @@ $message-overlay-box-font-size: 50px;
 .hide-message {
   opacity: 0;
 }
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: unset;
+}
