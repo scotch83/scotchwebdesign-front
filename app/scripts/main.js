@@ -1,47 +1,66 @@
-
+let magicGrid;
 window.onload = () => {
-    new MagicGrid(document.getElementById('container'));
-    startMessaging();
+    magicGrid = new MagicGrid(document.getElementById('container'));
+    const messagesContainer = document.getElementById('message-overlay');
+    startMessaging(messagesContainer);
 };
 
 const messages = [
-    'This is my website',
-    'Feel free to click around'
+    'Hi,',
+    `This is my website`,
+    'What is essential, is invisible to the eye'
 ]
 
-const startMessaging = () => {
-    setInterval(() => {
-        const messageBox = document.getElementById('message-overlay');
-        if(messageBox.classList.contains('hide-message'))
+const startMessaging = (container) => {
+    _showMessages(container, messages[messages.indexOf(container.textContent) + 1]);
+    const messageTimer = setInterval(() => {
+        if(container.classList.contains('hide-message'))
         {
-            _showMessages(messageBox)
-            messageBox.classList.remove('hide-message');
+            if(messages.indexOf(container.textContent) + 1  === messages.length){
+                clearInterval(messageTimer);
+                _showLinks(container);
+            } else _showMessages(container,messages[messages.indexOf(container.textContent) + 1]);
+            container.classList.remove('hide-message');
         }
-        else messageBox.classList.add('hide-message');
+        else container.classList.add('hide-message');
     }, 1000 )
 }
-let index = 0;
-const _showMessages = (container) => {
-    container.textContent = messages[index%messages.length];
-    index++;
+const _showMessages = (container, message) => {
+    container.textContent = message;
 }
-const MagicGrid = function (container) {
+const _showLinks = (container) => {
+    const linksDiv = document.createElement('div');
+    linksDiv.innerHTML = `<a href="https://github.com/scotch83" target="_blank">Mattia Collalti - Software developer</a>`;
+    container.textContent = "";
+    container.style.zIndex = magicGrid.zIndex + 1;
+    container.appendChild(linksDiv);
+}
+const MagicGrid =  function (container) {
     this.wClicked = false;
     this.zIndex = 0;
-    this.numSquares = 50;
-    this._container
+    this.squaresPerRow = 50;
+    this.squares = [];
+    this.disableAnimation = false;
     this.generateSquares(container);
 }
 
-MagicGrid.prototype.generateSquares = function (container) {
+MagicGrid.prototype.showAllSquares = function () {
+    for(let i = 0; i < this.squares.length; i++) {
+        const square = this.squares[i];
+        square.style.opacity = 1;
+        square.style.zIndex = 0;
+    }
+}
 
-    const sqWidth = window.innerWidth / this.numSquares;
+MagicGrid.prototype.generateSquares =  function (container) {
+
+    const sqWidth = window.innerWidth / this.squaresPerRow;
     const numRows = Math.floor(window.innerHeight / sqWidth) + 1;
     for (let j = 0; j < numRows; j++) {
         const row = document.createElement('div');
         row.classList.add('row');
-        for (let i = 0; i < this.numSquares; i++) {
-            row.appendChild(this.getSquare())
+        for (let i = 0; i < this.squaresPerRow; i++) {
+            row.appendChild(this.getSquare());
         }
         container.appendChild(row)
     }
@@ -52,6 +71,7 @@ MagicGrid.prototype.getSquare = function () {
     const color = this.getRandomColor();
 
     const square = document.createElement('div');
+    this.squares.push(square);
     square.classList.add('square');
     square.style.backgroundColor = color;
 
@@ -80,11 +100,13 @@ MagicGrid.prototype.getSquare = function () {
 }
 
 MagicGrid.prototype.removeAnimationEvent = function (e, square) {
+    if(this.disableAnimation) return;
     e.preventDefault();
     square.classList.remove('squareAnimated');
 }
 
 MagicGrid.prototype.animateSquareEvent = function (e, square) {
+    if(this.disableAnimation) return;
     e.preventDefault();
     square.style.zIndex = ++this.zIndex;
     square.classList.add('squareAnimated');

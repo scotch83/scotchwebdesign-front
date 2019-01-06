@@ -85,10 +85,11 @@ $message-overlay-box-font-size: 50px;
   text-align: center;
   width: 100%;
   z-index: -1;
+  user-select: none;
 }
 .animated-message {
   opacity: 1;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 .hide-message {
   opacity: 0;
