@@ -6,9 +6,10 @@ window.onload = () => {
 };
 
 const messages = [
-    'Hi,',
+    'What is essential, is invisible to the eye',
     `This is my website`,
-    'What is essential, is invisible to the eye'
+    'and you\'ll be disappointed',
+    'it is not what it looks like!'
 ]
 
 const startMessaging = (container) => {
@@ -23,14 +24,14 @@ const startMessaging = (container) => {
             container.classList.remove('hide-message');
         }
         else container.classList.add('hide-message');
-    }, 1000 )
+    }, 1200 )
 }
 const _showMessages = (container, message) => {
     container.textContent = message;
 }
 const _showLinks = (container) => {
     const linksDiv = document.createElement('div');
-    linksDiv.innerHTML = `<a href="https://github.com/scotch83" target="_blank">Mattia Collalti - Software developer</a>`;
+    linksDiv.innerHTML = `<a href="https://github.com/scotch83" target="_blank">Mattia Collalti - Creative software developer</a>`;
     container.textContent = "";
     container.style.zIndex = magicGrid.zIndex + 1;
     container.appendChild(linksDiv);
