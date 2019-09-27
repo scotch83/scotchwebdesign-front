@@ -4,6 +4,9 @@ const gulpLoadPlugins = require('gulp-load-plugins');
 const browserSync = require('browser-sync').create();
 const del = require('del');
 const wiredep = require('wiredep').stream;
+
+// https://www.npmjs.com/package/run-sequence
+// Runs a sequence of gulp tasks in the specified order.
 const runSequence = require('run-sequence');
 
 const $ = gulpLoadPlugins();
