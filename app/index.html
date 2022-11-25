@@ -18,12 +18,63 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
     
+    <link rel="preload"
+          as="script"
+          href="https://cdn.iubenda.com/cs/iubenda_cs.js" />
+    <link rel="preload"
+          as="script"
+          href="https://cdn.iubenda.com/cs/tcf/stub-v2.js" />
+    <script src="https://cdn.iubenda.com/cs/tcf/stub-v2.js"></script>
+    <script>
+      (_iub = self._iub || []).csConfiguration = {
+        cookiePolicyId: 39379132,
+        siteId: 2875581,
+        localConsentDomain: 'scotchwebdesign.altervista.org',
+        timeoutLoadConfiguration: 30000,
+        lang: 'en',
+        enableTcf: true,
+        tcfVersion: 2,
+        tcfPurposes: {
+          "2": "consent_only",
+          "3": "consent_only",
+          "4": "consent_only",
+          "5": "consent_only",
+          "6": "consent_only",
+          "7": "consent_only",
+          "8": "consent_only",
+          "9": "consent_only",
+          "10": "consent_only"
+        },
+        invalidateConsentWithoutLog: true,
+        googleAdditionalConsentMode: true,
+        consentOnContinuedBrowsing: false,
+        banner: {
+          position: "top",
+          acceptButtonDisplay: true,
+          customizeButtonDisplay: true,
+          closeButtonDisplay: true,
+          closeButtonRejects: true,
+          fontSizeBody: "14px",
+        },
+      }
+    </script>
+    <script async
+            src="https://cdn.iubenda.com/cs/iubenda_cs.js"></script>
+
   </head>
   <body>
     <!--[if IE]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <div id="container">
+    </div>
+    <div class="privacy-policy-cookie">
+      <a href="https://www.iubenda.com/privacy-policy/39379132"
+         rel="noreferrer nofollow"
+         target="_blank">Privacy Policy</a>
+      - <a href="#"
+         role="button"
+         class="iubenda-advertising-preferences-link">Customize advertising tracking</a>
     </div>
     <div id="message-overlay" class="animated-message"></div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

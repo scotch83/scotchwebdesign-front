@@ -87,6 +87,13 @@ $message-overlay-box-font-size: 50px;
   z-index: -1;
   user-select: none;
 }
+.privacy-policy-cookie{
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  text-align: center;
+  padding: 10px 20px;
+}
 .animated-message {
   opacity: 1;
   transition: all 0.5s ease-in-out;
