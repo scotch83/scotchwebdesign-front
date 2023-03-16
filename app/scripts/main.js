@@ -31,7 +31,7 @@ const _showMessages = (container, message) => {
 }
 const _showLinks = (container) => {
     const linksDiv = document.createElement('div');
-    linksDiv.innerHTML = `<a href="https://github.com/scotch83" target="_blank">Mattia Collalti - Creative software developer</a>`;
+    linksDiv.innerHTML = `<a href="https://scotch83.github.io" target="_blank">Mattia Collalti - Creative software developer</a>`;
     container.textContent = "";
     container.style.zIndex = magicGrid.zIndex + 1;
     container.appendChild(linksDiv);
